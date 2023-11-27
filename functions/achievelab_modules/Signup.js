@@ -5,11 +5,6 @@
 const {getFirestore} = require("firebase-admin/firestore");
 const {getAuth, signInWithEmailAndPassword} = require("firebase-admin/auth");
 
-// Turn on admin app
-const {initializeApp} = require("firebase-admin/app");
-
-initializeApp();
-
 
 async function handleSignUp(email, password, name) {
   getAuth()
@@ -29,6 +24,9 @@ async function handleSignUp(email, password, name) {
           social_credit: 100,
           team_refs: [],
           deposits: {},
+          team_points: {},
+          tier: "Bronze",
+          progress: {},
         })
             .then(() => {
               console.log(`new user ${name} is written`);

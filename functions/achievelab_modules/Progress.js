@@ -1,8 +1,35 @@
 /* eslint-disable require-jsdoc */
-const {getFirestore, doc, getDoc, getDocs, updateDoc, collection} =
-   require("firebase/firestore");
-// const functions = require("firebase-functions");
+const {getFirestore} =
+  require("firebase-admin/firestore");
+
+const {extractTeamNames} = require("./Infos");
+
 const db = getFirestore();
+
+// Wrapper function for firebase-admin
+function doc(_db, path, subPath) {
+  const doc = db.doc(path + "/" + subPath);
+  return doc;
+}
+async function getDoc(doc) {
+  const docSnap = doc.get();
+  return docSnap;
+}
+
+async function collection(db, path) {
+  const col = await db.collection(path);
+  return col;
+}
+
+async function getDocs(col) {
+  const colSnap = await col.get();
+  return colSnap;
+}
+
+async function updateDoc(doc, data) {
+  doc.update(data);
+}
+
 
 const {setTier} = require("./SetTier");
 
@@ -10,7 +37,7 @@ const {setTier} = require("./SetTier");
 const doesMappingExist = async (userName, date, teamName) => {
   const userRef = doc(db, "users", userName);
   const userDoc = await getDoc(userRef);
-  if (userDoc.exists()) {
+  if (userDoc.exists) {
     const progressMap = userDoc.data().progress || {};
     const dateMap = progressMap[date] || {};
     return (dateMap[teamName] != undefined);
@@ -30,7 +57,7 @@ async function addProgressMapping(userName, date, teamName, result) {
       console.error("same mapping already exists");
       return false;
     } else {
-      if (userDoc.exists() && teamDoc.exists()) {
+      if (userDoc.exists && teamDoc.exists) {
         const progress = userDoc.data().progress || {};
         const dateMap = progress[date] || {};
         dateMap[teamName] = result;
@@ -94,9 +121,9 @@ async function addProgressMapping(userName, date, teamName, result) {
 async function everyNightProgress() {
   const today = new Date();
   const year = today.getFullYear();
-  const month = (today.getMonth() + 1).toString().padStart(2, '0'); 
-  const day = today.getDate().toString().padStart(2, '0');
-  const dateTimeString = `${year}${month}${day}`;
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const day = today.getDate().toString().padStart(2, "0");
+  const dateTimeString = `${year}-${month}-${day}`;
 
   const userRefs = collection(db, "users");
   const userDocs = await getDocs(userRefs);
@@ -105,9 +132,10 @@ async function everyNightProgress() {
     const teamNames = await extractTeamNames(userDoc.data().team_refs);
     teamNames.forEach(async (teamName) => {
       await addProgressMapping(userName, dateTimeString, teamName, "fail");
-    })
-  })
+    });
+  });
 }
-
-module.exports = {setTier, doesMappingExist,
-  addProgressMapping, everyNightProgress};
+module.exports = {
+  doesMappingExist,
+  addProgressMapping, everyNightProgress,
+};

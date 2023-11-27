@@ -1,20 +1,40 @@
 /* eslint-disable require-jsdoc */
-const {getFirestore, doc, collection, getDoc,
-} = require("firebase/firestore");
+const {getFirestore} = require("firebase-admin/firestore");
 const {ranking} = require("./Ranking");
+
 const db = getFirestore();
+
+// Wrapper function for firebase-admin
+function doc(_db, path, subPath) {
+  const doc = db.doc(path + "/" + subPath);
+  return doc;
+}
+
+async function getDoc(doc) {
+  const docSnap = doc.get();
+  return docSnap;
+}
+
+async function collection(db, path) {
+  const col = await db.collection(path);
+  return col;
+}
+
 
 async function userExist(userName) {
   const userRef = doc(db, "users", userName);
+  console.log(userRef);
   const userDoc = await getDoc(userRef);
-  const result = userDoc.exists();
+  console.log(userDoc);
+  const result = userDoc.exists;
   return result;
 }
 
 async function teamExist(teamName) {
   const teamRef = doc(db, "teams", teamName);
   const teamDoc = await getDoc(teamRef);
-  const result = teamDoc.exists();
+  console.log(teamDoc.exists);
+  const result = teamDoc.exists;
   return result;
 }
 
@@ -139,5 +159,7 @@ async function getTier(userName) {
   const tier = userDoc.data().tier;
   return tier;
 }
-module.exports = {progressInfo, userCredit, userTeamPoints, userDeposits,
-  teamPoints, getUserInfo, getTeamInfo, userExist, teamExist, getTier};
+module.exports = {
+  progressInfo, userCredit, userTeamPoints, userDeposits,
+  teamPoints, getUserInfo, getTeamInfo, userExist, teamExist, getTier,
+};

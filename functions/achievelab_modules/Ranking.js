@@ -1,26 +1,32 @@
 /* eslint-disable require-jsdoc */
-const {getFirestore, collection,
-  getDocs, query, where, orderBy, limit} = require("firebase/firestore");
+const {getFirestore} = require("firebase-admin/firestore");
 
 const db = getFirestore();
 
+// collection, getDocs, query, where, orderBy, limit
+
+
 async function ranking(teamName) {
   try {
-    const usersCollectionRef = collection(db, "users");
-    const q = query(usersCollectionRef,
-        where(`team_points.${teamName}`, ">", 0));
-    const querySnapshot = await getDocs(q);
+    // const usersCollectionRef = collection(db, "users");
+    // const q = query(usersCollectionRef,
+    //     where(`team_points.${teamName}`, ">", 0));
+    // const querySnapshot = await getDocs(q);
+
+    const querySnapshot = await db.collection("users")
+        .where(`team_points.${teamName}`, ">", 0).get();
+
     const usersData = [];
 
-    querySnapshot.forEach((userDoc) => {
-      const userData = userDoc.data();
 
+    for (const userDoc of querySnapshot.docs) {
+      const userData = userDoc.data();
       usersData.push({
         id: userDoc.id,
         team_points: userData.team_points &&
         userData.team_points[teamName] ? userData.team_points[teamName] : 0,
       });
-    });
+    }
 
     const sortedUsers = usersData.sort((a, b) => b.team_points - a.team_points);
     return sortedUsers;
@@ -32,11 +38,13 @@ async function ranking(teamName) {
 
 async function getTeamRanking(teamName) {
   try {
-    const teamsCollectionRef = collection(db, "teams");
-
     // Query teams with the specified teamName
-    const q = query(teamsCollectionRef, orderBy("total_points", "desc"));
-    const querySnapshot = await getDocs(q);
+    // const q = query(teamsCollectionRef, orderBy("total_points", "desc"));
+    // const querySnapshot = await getDocs(q);
+
+    const querySnapshot =
+      await db.collection("teams").orderBy("total_points", "desc").get();
+
 
     let ranking = 0;
 
@@ -54,26 +62,35 @@ async function getTeamRanking(teamName) {
   }
 }
 
-async function getTopNRanking(N) {
+async function getTopNRanking() {
   try {
-    const teamsCollectionRef = collection(db, "teams");
-
+    // const teamsCollectionRef = collection(db, "teams");
     // Query teams with non-zero team_points, order by team_points
     // in descending order, and limit to the top N teams
-    const q = query(teamsCollectionRef, where("total_points", ">", 0)
-        , orderBy("total_points", "desc"), limit(N));
-    const querySnapshot = await getDocs(q);
+    // const q = query(teamsCollectionRef, where("total_points", ">", 0)
+    //     , orderBy("total_points", "desc"), limit(N));
+    // const querySnapshot = await getDocs(q);
+
+    // N = parseInt(N);
+
+    // console.log(N);
+
+    const querySnapshot = await db.collection("teams")
+        .where("total_points", ">", 0)
+        .orderBy("total_points", "desc")
+        .get();
 
     const topNRanking = [];
 
     // Iterate through the query results to build the top N ranking
-    querySnapshot.forEach((teamDoc) => {
+    for (const teamDoc of querySnapshot.docs) {
       const teamData = teamDoc.data();
       topNRanking.push({
         teamName: teamDoc.id,
         totalPoints: teamData.total_points,
       });
-    });
+    }
+
 
     return topNRanking;
   } catch (error) {

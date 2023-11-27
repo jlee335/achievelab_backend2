@@ -5,15 +5,25 @@
 //     updateDoc, increment, arrayUnion, query, where,
 //     orderBy, limit } = require("firebase-admin/firestore");
 
-const {getFirestore, doc, collection, getDoc, setDoc,
-  updateDoc, arrayUnion, runTransaction} = require("firebase/firestore");
+const {getFirestore} = require("firebase-admin/firestore");
 
-const {setTier} = require("./SetTier");
-
-const {transferUserTeam} =
-  require("./PointLogic");
 
 const db = getFirestore();
+
+// Wrapper function for firebase-admin
+function doc(_db, path, subPath) {
+  const doc = db.doc(path + "/" + subPath);
+  return doc;
+}
+
+async function getDoc(doc) {
+  const docSnap = doc.get();
+  return docSnap;
+}
+async function updateDoc(doc, data) {
+  doc.update(data);
+}
+
 
 // Resets releationship between User and Team
 async function resetUserTeam(userRef, teamRef) {

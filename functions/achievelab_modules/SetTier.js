@@ -1,22 +1,38 @@
 /* eslint-disable require-jsdoc */
-const {getFirestore, doc, collection, getDoc,
-  updateDoc} = require("firebase/firestore");
+const {getFirestore} = require("firebase-admin/firestore");
 
 
 const db = getFirestore();
 
+// Wrapper function for firebase-admin
+function doc(_db, path, subPath) {
+  const doc = db.doc(path + "/" + subPath);
+  return doc;
+}
+
+
+async function getDoc(doc) {
+  const docSnap = doc.get();
+  return docSnap;
+}
+
+async function updateDoc(doc, data) {
+  doc.update(data);
+}
+
+
 async function setTier(userName) {
-  const userRef = doc(collection(db, "users"), userName);
+  const userRef = doc(db, "users", userName);
   const userDoc = await getDoc(userRef);
-  if (userDoc.exists()) {
-    let score = userDoc.data().social_credit;
-    for (const [team, deposit] of Object.entries(userDoc.data().deposits)) {
-      team;
-      score += deposit;
-    }
+  if (userDoc.exists) {
+    const score = userDoc.data().social_credit;
+    // for (const [team, deposit] of Object.entries(userDoc.data().deposits)) {
+    //   team;
+    //   score += deposit;
+    // }
     let tier;
-    if (score <= 30) tier = "Iron";
-    else if (score <= 60) tier = "Bronze";
+    console.log(score);
+    if (score <= 60) tier = "Bronze";
     else if (score <= 90) tier = "Silver";
     else if (score <= 120) tier = "Gold";
     else if (score <= 150) tier = "Platinum";

@@ -17,25 +17,11 @@ const functions = require("firebase-functions");
 // const {onDocumentCreated} = require("firebase-functions/v2/firestore");s
 
 // The Firebase Admin SDK to access Firestore.
-// const { initializeApp } = require("firebase-admin/app");
-// const {getFirestore} = require("firebase-admin/firestore");
+const {initializeApp} = require("firebase-admin/app");
+const {getFirestore} = require("firebase-admin/firestore");
 // const {getAuth} = require("firebase-admin/auth");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDgXIlbNj-LheKdER9a29ZDJO20Ik6lCOw",
-  authDomain: "achievalab-hifi.firebaseapp.com",
-  databaseURL: "https://achievalab-hifi-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "achievalab-hifi",
-  storageBucket: "achievalab-hifi.appspot.com",
-  messagingSenderId: "862067171806",
-  appId: "1:862067171806:web:185cca6c85fb0bb81dbd4f",
-  measurementId: "G-DBKZ3NHNCL",
-};
-
-initializeApp(firebaseConfig);
-
-const {getFirestore, collection,
-  getDocs} = require("firebase/firestore");
+initializeApp();
 
 
 const {handleSignUp} = require("./achievelab_modules/Signup");
@@ -46,7 +32,7 @@ const {addChat, getChats} = require("./achievelab_modules/Chat");
 const {getUserInfo, getTeamInfo, userExist, teamExist, progressInfo, getTier} =
   require("./achievelab_modules/Infos");
 const {getTopNRanking} = require("./achievelab_modules/Ranking");
-const {resetTeam} = require("./achievelab_modules/reset");
+const {resetTeam} = require("./achievelab_modules/Reset");
 // const {transferTeamUser, transferUserTeam} =
 //   require("./achievelab_modules/PointLogic");
 
@@ -54,19 +40,20 @@ const {resetTeam} = require("./achievelab_modules/reset");
 // https://firebase.google.com/docs/functions/get-started
 
 // Signup
-exports.handleSignUp = onRequest((request, response) => {
-  // Extract the email and password from the POST request.
-  console.log(request.body);
-  const email = request.body.email;
-  const password = request.body.password;
-  const name = request.body.name;
-  // Call the `handleSignUp` function from the `Signup` module.
-  handleSignUp(email, password, name);
-  // Return a JSON response.
-  response.json({result: "success"});
-});
+exports.handleSignUp = onRequest({cors: true},
+    (request, response) => {
+      // Extract the email and password from the POST request.
+      console.log(request.body);
+      const email = request.body.email;
+      const password = request.body.password;
+      const name = request.body.name;
+      // Call the `handleSignUp` function from the `Signup` module.
+      handleSignUp(email, password, name);
+      // Return a JSON response.
+      response.json({result: "success"});
+    });
 
-// exports.handleSignIn = onRequest((request, response) => {
+// exports.handleSignIn = onRequest({cors: true},(request, response) => {
 //   // Extract the email and password from the POST request.
 //   console.log(request.body);
 //   const email = request.body.email;
@@ -77,7 +64,7 @@ exports.handleSignUp = onRequest((request, response) => {
 //   response.json({result: "success"});
 // });
 
-exports.newTeam = onRequest((request, response) => {
+exports.newTeam = onRequest({cors: true}, (request, response) => {
   // Extract the email and password from the POST request.
   console.log(request.body);
   const userName = request.body.userName;
@@ -92,7 +79,7 @@ exports.newTeam = onRequest((request, response) => {
 });
 
 /* Ranking and progress */
-exports.addProgressMapping = onRequest((request, response) => {
+exports.addProgressMapping = onRequest({cors: true}, (request, response) => {
   const userName = request.body.userName;
   const date = request.body.date; // new Date().toISOString().split('T')[0]
   const teamName = request.body.teamName;
@@ -107,7 +94,7 @@ exports.addProgressMapping = onRequest((request, response) => {
   });
 });
 
-// exports.ranking = onRequest((request, response) => {
+// exports.ranking = onRequest({cors: true},(request, response) => {
 //   const teamName = request.body.teamName;
 //   ranking(teamName).then((result) => {
 //     response.json({in_team_ranking: result});
@@ -116,7 +103,7 @@ exports.addProgressMapping = onRequest((request, response) => {
 //   });
 // });
 
-// exports.getTeamRanking = onRequest((request, response) => {
+// exports.getTeamRanking = onRequest({cors: true},(request, response) => {
 //   const teamName = request.body.teamName;
 //   getTeamRanking(teamName).then((result) => {
 //     response.json({team_ranking: result});
@@ -125,7 +112,7 @@ exports.addProgressMapping = onRequest((request, response) => {
 //   });
 // });
 
-// exports.getTopNRanking = onRequest((request, response) => {
+// exports.getTopNRanking = onRequest({cors: true},(request, response) => {
 //   const numTeams = request.body.numTeams;
 //   getTopNRanking(numTeams).then((result) => {
 //     response.json({topNranking: result});
@@ -133,7 +120,7 @@ exports.addProgressMapping = onRequest((request, response) => {
 //     console.error(error);
 //   });
 // });
-exports.addChatAPI = onRequest(async (request, response) => {
+exports.addChatAPI = onRequest({cors: true}, async (request, response) => {
   const userName = request.body.userName;
   const teamName = request.body.teamName;
   const uE = userExist(userName);
@@ -151,7 +138,7 @@ exports.addChatAPI = onRequest(async (request, response) => {
   }
 });
 
-exports.getChatsAPI = onRequest(async (request, response) => {
+exports.getChatsAPI = onRequest({cors: true}, async (request, response) => {
   const teamName = request.body.teamName;
   const tE = await teamExist(teamName);
   if (!tE) {
@@ -165,7 +152,7 @@ exports.getChatsAPI = onRequest(async (request, response) => {
   }
 });
 
-exports.joinTeamAPI = onRequest(async (request, response) => {
+exports.joinTeamAPI = onRequest({cors: true}, async (request, response) => {
   const userName = request.body.userName;
   const teamName = request.body.teamName;
   console.log("========================================");
@@ -204,43 +191,71 @@ exports.joinTeamAPI = onRequest(async (request, response) => {
 });
 
 
-exports.progressAPI = onRequest(async (request, response) => {
+exports.progressAPI = onRequest({cors: true}, async (request, response) => {
   const userName = request.body.userName;
   const teamName = request.body.teamName;
   const date = request.body.date;
   const success = request.body.isSuccess;
 
+  // Format YYYYMMDD to  YYYY-MM-DD
+  const dateStr = date.toString();
+  const dateFormatted =
+    `${dateStr.slice(0, 4)}-${dateStr.slice(4, 6)}-${dateStr.slice(6, 8)}`;
+  console.log(dateFormatted);
+
+
   const prevInfo = await progressInfo(userName, teamName);
-  const result = await addProgressMapping(userName, date, teamName, "success");
+
+  let a = "success";
+  if (!success) a = "fail";
+
+
+  const result = await addProgressMapping(
+      userName, dateFormatted, teamName, a);
   if (!result) {
     response.json({
-      result: "fail",
+      result: {
+        isSuccess: false,
+        body: {
+          error: "fail to add progress",
+        },
+      },
     });
   } else {
     if (success) {
       const curInfo = await progressInfo(userName, teamName);
       const rankChanged = (prevInfo["Ranking"] != curInfo["Ranking"]);
       response.json({
-        rankChanged: rankChanged,
-        prevRank: prevInfo["Ranking"],
-        curRank: curInfo["Ranking"],
-        prevScore: prevInfo["Point"],
-        curScore: curInfo["Point"],
-        prevTotalScore: prevInfo["TotalPoint"],
-        curTotalScore: curInfo["TotalPoint"],
+        result: {
+          isSuccess: true,
+          body: {
+            rankChanged: rankChanged,
+            prevRank: prevInfo["Ranking"],
+            curRank: curInfo["Ranking"],
+            prevScore: prevInfo["Point"],
+            curScore: curInfo["Point"],
+            prevTotalScore: prevInfo["TotalPoint"],
+            curTotalScore: curInfo["TotalPoint"],
+          },
+        },
       });
     } else {
       const userInfo = await getUserInfo(userName);
       response.json({
-        leftDeposit: userInfo["deposits"][teamName],
+        result: {
+          isSuccess: true,
+          body: {
+            leftDeposit: userInfo["deposits"][teamName],
+          },
+        },
       });
     }
   }
 });
 
-exports.LeaderBoardAPI = onRequest(async (request, response) => {
-  const N = request.body.N;
-  const LeaderBoardInfos = await getTopNRanking(N);
+exports.LeaderBoardAPI = onRequest({cors: true}, async (request, response) => {
+  // const N = request.body.N;
+  const LeaderBoardInfos = await getTopNRanking();
   response.json({
     LeaderBoardInfos,
   });
@@ -249,8 +264,11 @@ exports.LeaderBoardAPI = onRequest(async (request, response) => {
 
 async function paybackCallback(event) {
   const db = getFirestore();
-  const teamsRef = collection(db, "teams");
-  const teamsSnapshot = await getDocs(teamsRef);
+
+  // const teamsRef = collection(db, "teams");
+  const teamsRef = db.collection("teams");
+  // const teamsSnapshot = await getDocs(teamsRef);
+  const teamsSnapshot = await teamsRef.get();
   teamsSnapshot.forEach(async (teamDoc) => {
     const teamName = teamDoc.data().name;
     await resetTeam(teamName);
@@ -259,7 +277,7 @@ async function paybackCallback(event) {
 }
 
 
-exports.paybackManual = onRequest(async (request, response) => {
+exports.paybackManual = onRequest({cors: true}, async (request, response) => {
   paybackCallback(null);
   response.json({
     result: "success",
@@ -268,7 +286,7 @@ exports.paybackManual = onRequest(async (request, response) => {
 
 exports.payback = onSchedule("every monday 00:00", paybackCallback);
 
-exports.getTierAPI = onRequest(async (request, response) => {
+exports.getTierAPI = onRequest({cors: true}, async (request, response) => {
   const userName = request.body.userName;
   const tier = await getTier(userName);
   response.json({
@@ -278,14 +296,15 @@ exports.getTierAPI = onRequest(async (request, response) => {
 });
 
 exports.scheduledFunction = functions.pubsub
-  .schedule('every day 22:11')
-  .timeZone('Asia/Seoul') // Set the time zone to Korea Standard Time (UTC+9)
-  .onRun(async (context) => {
-    console.log('This will be run every day at 22:10 in Korea Standard Time!');
-    await everyNightProgress();
-    return null;
-  });
+    .schedule("every day 22:11")
+    .timeZone("Asia/Seoul") // Set the time zone to Korea Standard Time (UTC+9)
+    .onRun(async (context) => {
+      console.log(
+          "This will be run every day at 22:10 in Korea Standard Time!");
+      await everyNightProgress();
+      return null;
+    });
 // Force reset all users by GET call
-exports.resetUsers = onRequest(async (request, response) => {
+exports.resetUsers = onRequest({cors: true}, async (request, response) => {
   paybackCallback(null);
 });

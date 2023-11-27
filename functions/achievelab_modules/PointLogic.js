@@ -1,8 +1,20 @@
 /* eslint-disable require-jsdoc */
-const {getFirestore, doc, runTransaction} = require("firebase/firestore");
+const {getFirestore} = require("firebase-admin/firestore");
 const {logger} = require("firebase-functions");
 
 const db = getFirestore();
+
+// Wrapper function for firebase-admin
+function doc(_db, path, subPath) {
+  const doc = db.doc(path + "/" + subPath);
+  return doc;
+}
+
+async function runTransaction(db, callback) {
+  const result = await db.runTransaction(callback);
+  return result;
+}
+
 
 /* Transaction amount of credit Team --> User */
 async function transferTeamUser(userName, teamName, amount) {
