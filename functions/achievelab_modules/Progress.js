@@ -2,7 +2,6 @@
 const {getFirestore} =
   require("firebase-admin/firestore");
 
-const {extractTeamNames} = require("./Infos");
 
 const db = getFirestore();
 
@@ -16,20 +15,18 @@ async function getDoc(doc) {
   return docSnap;
 }
 
-async function collection(db, path) {
-  const col = await db.collection(path);
-  return col;
-}
-
-async function getDocs(col) {
-  const colSnap = await col.get();
-  return colSnap;
-}
-
 async function updateDoc(doc, data) {
   doc.update(data);
 }
 
+async function extractTeamNames(referenceList) {
+  const teamNames = [];
+  for (const ref of referenceList) {
+    const a = (await getDoc(ref)).data();
+    teamNames.push(a.name);
+  }
+  return teamNames;
+}
 
 const {setTier} = require("./SetTier");
 
@@ -125,8 +122,7 @@ async function everyNightProgress() {
   const day = today.getDate().toString().padStart(2, "0");
   const dateTimeString = `${year}-${month}-${day}`;
 
-  const userRefs = collection(db, "users");
-  const userDocs = await getDocs(userRefs);
+  const userDocs = await db.collection("users").get();
   userDocs.forEach(async (userDoc) => {
     const userName = userDoc.data().name;
     const teamNames = await extractTeamNames(userDoc.data().team_refs);
@@ -135,7 +131,28 @@ async function everyNightProgress() {
     });
   });
 }
+
+async function testEveryNightProgress(givenUserName) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = (today.getMonth() + 1).toString().padStart(2, "0");
+  const day = today.getDate().toString().padStart(2, "0");
+  const dateTimeString = `${year}-${month}-${day}`;
+
+  const userDocs = await db.collection("users").get();
+  userDocs.forEach(async (userDoc) => {
+    const userName = userDoc.data().name;
+    if (userName == givenUserName) {
+      const teamNames = await extractTeamNames(userDoc.data().team_refs);
+      teamNames.forEach(async (teamName) => {
+        await addProgressMapping(userName, dateTimeString, teamName, "fail");
+      });
+    }
+  });
+}
+
+
 module.exports = {
   doesMappingExist,
-  addProgressMapping, everyNightProgress,
+  addProgressMapping, everyNightProgress, testEveryNightProgress,
 };

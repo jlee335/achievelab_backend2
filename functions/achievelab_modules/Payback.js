@@ -49,7 +49,7 @@ async function resetUser(userName) {
 }
 
 async function resetUsers() {
-  const collectionRef = collection(db, "users");
+  const collectionRef = await collection(db, "users");
   const userDocs = await getDocs(collectionRef);
   await userDocs.forEach((doc) => {
     resetUser(doc.data().name);

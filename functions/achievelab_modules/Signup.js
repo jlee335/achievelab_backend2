@@ -55,4 +55,7 @@ async function handleSignIn(email, password) {
   }
 }
 
+/** Version 2 */
+
+
 module.exports = {handleSignUp, handleSignIn};

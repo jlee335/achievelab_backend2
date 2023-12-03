@@ -26,7 +26,7 @@ initializeApp();
 
 const {handleSignUp} = require("./achievelab_modules/Signup");
 const {newTeam, joinTeam} = require("./achievelab_modules/Teams");
-const {addProgressMapping, everyNightProgress} =
+const {addProgressMapping, everyNightProgress, testEveryNightProgress} =
   require("./achievelab_modules/Progress");
 const {addChat, getChats} = require("./achievelab_modules/Chat");
 const {getUserInfo, getTeamInfo, userExist, teamExist, progressInfo, getTier} =
@@ -295,6 +295,18 @@ exports.getTierAPI = onRequest({cors: true}, async (request, response) => {
   });
 });
 
+exports.scheduledFunctionTest = onRequest({cors: true},
+    async (request, response) => {
+      const userName = request.body.userName;
+      console.log(
+          "This will be run every day at 22:10 in Korea Standard Time!");
+
+      await testEveryNightProgress(userName);
+      response.json({
+        "result": "success",
+      });
+    });
+
 exports.scheduledFunction = functions.pubsub
     .schedule("every day 22:11")
     .timeZone("Asia/Seoul") // Set the time zone to Korea Standard Time (UTC+9)
@@ -307,4 +319,69 @@ exports.scheduledFunction = functions.pubsub
 // Force reset all users by GET call
 exports.resetUsers = onRequest({cors: true}, async (request, response) => {
   paybackCallback(null);
+});
+
+
+/**
+ * Input format
+ *  userName : string
+ *  teamName : string
+ * Outputs
+ * is_success : boolean
+ * message : string
+ *
+ */
+exports.joinTeamAPI2 = onRequest({cors: true}, async (request, response) => {
+  const userKey = request.body.userKey;
+  const teamKey = request.body.teamKey;
+
+
+  // find userRef and teamRef
+  const db = getFirestore();
+  const usersRef = db.collection("users2");
+  const teamsRef = db.collection("teams2");
+  const userDoc = await usersRef.doc(userKey).get();
+  const teamDoc = await teamsRef.doc(teamKey).get();
+
+  // Get user's current social points
+  const userSocialPoints = userDoc.data().social_points;
+
+
+  if (userSocialPoints < 100) {
+    response.json({
+      is_success: false,
+      message: "Not enough social points",
+    });
+    return;
+  }
+
+  const userSocialPointsAfter = userSocialPoints - 100;
+
+  // TeamRef 에서 할 것
+  const teamMembers = teamDoc.data().team_members;
+  // team_members have deposit_left, team_points, user_ref
+  const userRef = userDoc.ref;
+  const depositLeft = 100;
+  const teamPoints = 0;
+  const newUser = {
+    deposit_left: depositLeft,
+    team_points: teamPoints,
+    user_ref: userRef,
+  };
+  teamMembers.push(newUser);
+  await teamDoc.ref.update({
+    team_members: teamMembers,
+  });
+
+  // todos on userRef
+  userRef.update({
+    team: teamDoc.ref,
+    has_team: true,
+    social_points: userSocialPointsAfter,
+  });
+
+  response.json({
+    is_success: true,
+    message: "Successfully joined the team",
+  });
 });
