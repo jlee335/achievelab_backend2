@@ -18,7 +18,7 @@ const functions = require("firebase-functions");
 
 // The Firebase Admin SDK to access Firestore.
 const {initializeApp} = require("firebase-admin/app");
-const {getFirestore} = require("firebase-admin/firestore");
+const {getFirestore, Timestamp} = require("firebase-admin/firestore");
 // const {getAuth} = require("firebase-admin/auth");
 
 initializeApp();
@@ -340,11 +340,33 @@ exports.joinTeamAPI2 = onRequest({cors: true}, async (request, response) => {
   const db = getFirestore();
   const usersRef = db.collection("users2");
   const teamsRef = db.collection("teams2");
+
+  // Check if user and team exist
+  if (!(await usersRef.doc(userKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "User does not exist",
+    });
+    return;
+  }
+  if (!(await teamsRef.doc(teamKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "Team does not exist",
+    });
+    return;
+  }
+
   const userDoc = await usersRef.doc(userKey).get();
   const teamDoc = await teamsRef.doc(teamKey).get();
 
   // Get user's current social points
-  const userSocialPoints = userDoc.data().social_points;
+  let userSocialPoints = userDoc.data().social_points;
+
+  // If social points is NaN, set to 100
+  if (isNaN(userSocialPoints)) {
+    userSocialPoints = 100;
+  }
 
 
   if (userSocialPoints < 100) {
@@ -383,5 +405,142 @@ exports.joinTeamAPI2 = onRequest({cors: true}, async (request, response) => {
   response.json({
     is_success: true,
     message: "Successfully joined the team",
+  });
+});
+
+exports.kickTeamAPI = onRequest({cors: true}, async (request, response) => {
+  const userKey = request.body.userKey;
+  const teamKey = request.body.teamKey;
+
+  // find userRef and teamRef
+  const db = getFirestore();
+  const usersRef = db.collection("users2");
+  const teamsRef = db.collection("teams2");
+
+  // Check if user and team exist
+  if (!(await usersRef.doc(userKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "User does not exist",
+    });
+    return;
+  }
+  if (!(await teamsRef.doc(teamKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "Team does not exist",
+    });
+    return;
+  }
+
+  const userDoc = await usersRef.doc(userKey).get();
+  const teamDoc = await teamsRef.doc(teamKey).get();
+
+  // Get user's current social points
+  const userSocialPoints = userDoc.data().social_points;
+  const userTeam = userDoc.data().team;
+
+  if (!userTeam) {
+    response.json({
+      is_success: false,
+      message: "User does not have a team",
+    });
+    return;
+  }
+
+  if (userTeam.id != teamDoc.id) {
+    response.json({
+      is_success: false,
+      message: "User is not in the team",
+    });
+    return;
+  }
+
+  // GPT did alot of verification. A LOT
+  // Get team's current team members
+  const teamMembers = teamDoc.data().team_members;
+  // Get current user's index in the team
+  const userIndex = teamMembers.findIndex((member) => {
+    return member.user_ref.id == userDoc.id;
+  });
+
+  // Get user's current deposit left. User takes this back
+  const userDepositLeft = teamMembers[userIndex].deposit_left;
+
+  // Remove user from team members
+  teamMembers.splice(userIndex, 1);
+
+  // Update team members
+  await teamDoc.ref.update({
+    team_members: teamMembers,
+  });
+
+
+  // Update user's team
+  await userDoc.ref.update({
+    team: null,
+    has_team: false,
+  });
+
+  // Update user's social points
+  await userDoc.ref.update({
+    social_points: userSocialPoints + userDepositLeft,
+  });
+
+  // Return success
+  response.json({
+    is_success: true,
+    message: "Successfully kicked the user",
+  });
+});
+
+// A function getting userKey. If in users but not in users2, add to users2
+
+exports.addUserToUsers2 = onRequest({cors: true}, async (request, response) => {
+  const userKey = request.body.userKey;
+  const userEmail = request.body.userEmail;
+  // find userRef and teamRef
+  const db = getFirestore();
+  const usersRef = db.collection("users");
+  const users2Ref = db.collection("users2");
+
+  // Check if user and team exist
+  if (!(await usersRef.doc(userKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "User does not exist",
+    });
+    return;
+  }
+  if ((await users2Ref.doc(userKey).get()).exists) {
+    response.json({
+      is_success: false,
+      message: "User already exists in users2",
+    });
+    return;
+  }
+
+  const userDoc = await usersRef.doc(userKey).get();
+
+  // created_time is firestore timestamp. Get Now
+  const createdTime = Timestamp.now();
+
+
+  const newUser = {
+    created_time: createdTime,
+    display_name: userDoc.data().name,
+    email: userEmail,
+    social_points: 100,
+    has_team: false,
+    team: null,
+    progress_list: [],
+    uid: userKey,
+  };
+
+  await users2Ref.doc(userKey).set(newUser);
+
+  response.json({
+    is_success: true,
+    message: "Successfully added user to users2",
   });
 });
