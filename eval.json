@@ -1,0 +1,971 @@
+{
+    "is_success": true,
+    "message": {
+        "2s9HtWaCluVOaCXE2fV6aok5tAI3": [{
+            "end_time": {
+                "_seconds": 1702737007,
+                "_nanoseconds": 521000000
+            },
+            "start_time": {
+                "_seconds": 1702733397,
+                "_nanoseconds": 988000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }],
+        "5e5G2cjX2wRU2DIHDRrW7if4XAr1": [{
+            "start_time": {
+                "_seconds": 1702834849,
+                "_nanoseconds": 558000000
+            },
+            "end_time": {
+                "_seconds": 1702833376,
+                "_nanoseconds": 770000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "start_time": {
+                "_seconds": 1702834938,
+                "_nanoseconds": 6000000
+            },
+            "end_time": {
+                "_seconds": 1702833382,
+                "_nanoseconds": 918000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }],
+        "BgEUzpaFYqOhfIYjwV5gDAPE2Yk1": [{
+            "end_time": {
+                "_seconds": 1702631465,
+                "_nanoseconds": 526000000
+            },
+            "start_time": {
+                "_seconds": 1702620459,
+                "_nanoseconds": 981000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "CFrTyUaPUrQyeYjtVaoiIrUcKu62": [{
+            "end_time": {
+                "_seconds": 1702659414,
+                "_nanoseconds": 869000000
+            },
+            "start_time": {
+                "_seconds": 1702659379,
+                "_nanoseconds": 445000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702660572,
+                "_nanoseconds": 547000000
+            },
+            "start_time": {
+                "_seconds": 1702659434,
+                "_nanoseconds": 142000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702662227,
+                "_nanoseconds": 514000000
+            },
+            "start_time": {
+                "_seconds": 1702660588,
+                "_nanoseconds": 573000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "H3xkemOOqvegCzWfsyDmmsrUK573": [{
+            "end_time": {
+                "_seconds": 1702691398,
+                "_nanoseconds": 377000000
+            },
+            "start_time": {
+                "_seconds": 1702625022,
+                "_nanoseconds": 615000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702823770,
+                "_nanoseconds": 772000000
+            },
+            "start_time": {
+                "_seconds": 1702818010,
+                "_nanoseconds": 206000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }],
+        "HhwumhEqmhSxKl9zv768rBf1zCQ2": [{
+            "end_time": {
+                "_seconds": 1702814433,
+                "_nanoseconds": 663000000
+            },
+            "start_time": {
+                "_seconds": 1702662519,
+                "_nanoseconds": 891000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "MJcrmp5Tu7PFRz2gLQtUpdtxkh02": [{
+            "end_time": {
+                "_seconds": 1702814461,
+                "_nanoseconds": 811000000
+            },
+            "start_time": {
+                "_seconds": 1701828891,
+                "_nanoseconds": 61000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "NdAblhFCoialWvJde06ErYsu56J2": [{
+            "end_time": {
+                "_seconds": 1701656164,
+                "_nanoseconds": 594000000
+            },
+            "start_time": {
+                "_seconds": 1701656159,
+                "_nanoseconds": 742000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "R5JuNtgi3SUBJIHZT7TYPXRQ6YY2": [{
+            "end_time": {
+                "_seconds": 1701827544,
+                "_nanoseconds": 267000000
+            },
+            "start_time": {
+                "_seconds": 1701827316,
+                "_nanoseconds": 925000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702142769,
+                "_nanoseconds": 821000000
+            },
+            "start_time": {
+                "_seconds": 1701827566,
+                "_nanoseconds": 701000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702142781,
+                "_nanoseconds": 506000000
+            },
+            "start_time": {
+                "_seconds": 1702142776,
+                "_nanoseconds": 36000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702142799,
+                "_nanoseconds": 204000000
+            },
+            "start_time": {
+                "_seconds": 1702142796,
+                "_nanoseconds": 834000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702142817,
+                "_nanoseconds": 612000000
+            },
+            "start_time": {
+                "_seconds": 1702142814,
+                "_nanoseconds": 520000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702814497,
+                "_nanoseconds": 338000000
+            },
+            "start_time": {
+                "_seconds": 1702814476,
+                "_nanoseconds": 779000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702814501,
+                "_nanoseconds": 917000000
+            },
+            "start_time": {
+                "_seconds": 1702814500,
+                "_nanoseconds": 281000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702814691,
+                "_nanoseconds": 716000000
+            },
+            "start_time": {
+                "_seconds": 1702814686,
+                "_nanoseconds": 272000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "7gk1O4osepXd0roqYBv0"]
+                },
+                "_converter": {}
+            }
+        }],
+        "U88RtWNTkkPmmPSiHtuo25gSia32": [{
+            "end_time": {
+                "_seconds": 1701653842,
+                "_nanoseconds": 459000000
+            },
+            "start_time": {
+                "_seconds": 1701653672,
+                "_nanoseconds": 968000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701655741,
+                "_nanoseconds": 991000000
+            },
+            "start_time": {
+                "_seconds": 1701653847,
+                "_nanoseconds": 117000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701660829,
+                "_nanoseconds": 666000000
+            },
+            "start_time": {
+                "_seconds": 1701655745,
+                "_nanoseconds": 9000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701834544,
+                "_nanoseconds": 515000000
+            },
+            "start_time": {
+                "_seconds": 1701831858,
+                "_nanoseconds": 783000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702196780,
+                "_nanoseconds": 1000000
+            },
+            "start_time": {
+                "_seconds": 1702194227,
+                "_nanoseconds": 520000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702202942,
+                "_nanoseconds": 297000000
+            },
+            "start_time": {
+                "_seconds": 1702200709,
+                "_nanoseconds": 681000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702239834,
+                "_nanoseconds": 85000000
+            },
+            "start_time": {
+                "_seconds": 1702205012,
+                "_nanoseconds": 461000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702295745,
+                "_nanoseconds": 756000000
+            },
+            "start_time": {
+                "_seconds": 1702288282,
+                "_nanoseconds": 588000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702301100,
+                "_nanoseconds": 499000000
+            },
+            "start_time": {
+                "_seconds": 1702296846,
+                "_nanoseconds": 429000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702303817,
+                "_nanoseconds": 106000000
+            },
+            "start_time": {
+                "_seconds": 1702302208,
+                "_nanoseconds": 364000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702309021,
+                "_nanoseconds": 861000000
+            },
+            "start_time": {
+                "_seconds": 1702306120,
+                "_nanoseconds": 531000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702315803,
+                "_nanoseconds": 404000000
+            },
+            "start_time": {
+                "_seconds": 1702313501,
+                "_nanoseconds": 160000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702325060,
+                "_nanoseconds": 361000000
+            },
+            "start_time": {
+                "_seconds": 1702320879,
+                "_nanoseconds": 410000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702618445,
+                "_nanoseconds": 113000000
+            },
+            "start_time": {
+                "_seconds": 1702618361,
+                "_nanoseconds": 453000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702810773,
+                "_nanoseconds": 935000000
+            },
+            "start_time": {
+                "_seconds": 1702771500,
+                "_nanoseconds": 866000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702831129,
+                "_nanoseconds": 368000000
+            },
+            "start_time": {
+                "_seconds": 1702825192,
+                "_nanoseconds": 993000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702834806,
+                "_nanoseconds": 394000000
+            },
+            "start_time": {
+                "_seconds": 1702834522,
+                "_nanoseconds": 785000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702834836,
+                "_nanoseconds": 140000000
+            },
+            "start_time": {
+                "_seconds": 1702834808,
+                "_nanoseconds": 731000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702835077,
+                "_nanoseconds": 626000000
+            },
+            "start_time": {
+                "_seconds": 1702834838,
+                "_nanoseconds": 267000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702835149,
+                "_nanoseconds": 511000000
+            },
+            "start_time": {
+                "_seconds": 1702835115,
+                "_nanoseconds": 947000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702835247,
+                "_nanoseconds": 140000000
+            },
+            "start_time": {
+                "_seconds": 1702835186,
+                "_nanoseconds": 798000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702835476,
+                "_nanoseconds": 592000000
+            },
+            "start_time": {
+                "_seconds": 1702835261,
+                "_nanoseconds": 640000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }],
+        "jLR3h9pEemfwYSgCNMbzg99b0h62": [{
+            "end_time": {
+                "_seconds": 1702691694,
+                "_nanoseconds": 963000000
+            },
+            "start_time": {
+                "_seconds": 1702691565,
+                "_nanoseconds": 922000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702733382,
+                "_nanoseconds": 247000000
+            },
+            "start_time": {
+                "_seconds": 1702691701,
+                "_nanoseconds": 182000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }],
+        "vv4cxpSwrQPC85JpqKAL7SXwfIE3": [{
+            "end_time": {
+                "_seconds": 1701651408,
+                "_nanoseconds": 174000000
+            },
+            "start_time": {
+                "_seconds": 1701651404,
+                "_nanoseconds": 188000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701651554,
+                "_nanoseconds": 82000000
+            },
+            "start_time": {
+                "_seconds": 1701651439,
+                "_nanoseconds": 16000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701653407,
+                "_nanoseconds": 624000000
+            },
+            "start_time": {
+                "_seconds": 1701653052,
+                "_nanoseconds": 208000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1701657125,
+                "_nanoseconds": 768000000
+            },
+            "start_time": {
+                "_seconds": 1701653438,
+                "_nanoseconds": 227000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702680254,
+                "_nanoseconds": 535000000
+            },
+            "start_time": {
+                "_seconds": 1702617959,
+                "_nanoseconds": 432000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702754194,
+                "_nanoseconds": 902000000
+            },
+            "start_time": {
+                "_seconds": 1702729549,
+                "_nanoseconds": 908000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702831138,
+                "_nanoseconds": 243000000
+            },
+            "start_time": {
+                "_seconds": 1702825038,
+                "_nanoseconds": 116000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702833860,
+                "_nanoseconds": 581000000
+            },
+            "start_time": {
+                "_seconds": 1702833847,
+                "_nanoseconds": 338000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }, {
+            "end_time": {
+                "_seconds": 1702834129,
+                "_nanoseconds": 252000000
+            },
+            "start_time": {
+                "_seconds": 1702833884,
+                "_nanoseconds": 830000000
+            },
+            "team": {
+                "_firestore": {
+                    "projectId": "achievalab-hifi"
+                },
+                "_path": {
+                    "segments": ["teams2", "x0eV2UrrsLhcHSzSWMiF"]
+                },
+                "_converter": {}
+            }
+        }]
+    }
+}

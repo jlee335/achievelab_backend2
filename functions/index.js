@@ -544,3 +544,32 @@ exports.addUserToUsers2 = onRequest({cors: true}, async (request, response) => {
     message: "Successfully added user to users2",
   });
 });
+
+// Function that saves all user2's progress_list entries in JSON
+exports.saveProgressList = onRequest({cors: true},
+    async (request, response) => {
+      // find userRef and teamRef
+      const db = getFirestore();
+      const users2Ref = db.collection("users2");
+
+      // For each user, get progress_list
+
+      const progressListJSONFull = {};
+
+      const users2Snapshot = await users2Ref.get();
+
+      console.log(users2Snapshot);
+
+
+      users2Snapshot.forEach((userDoc) => {
+        const userKey = userDoc.id;
+        console.log(userKey);
+        const progressList = userDoc.data().progress_list;
+        progressListJSONFull[userKey] = progressList;
+      });
+
+      response.json({
+        is_success: true,
+        message: progressListJSONFull,
+      });
+    });
